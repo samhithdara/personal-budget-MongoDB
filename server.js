@@ -15,11 +15,27 @@ const budget = {
         },
         {
             title: 'Rent',
-            budget: 275
+            budget: 430
         },
         {
             title: 'Grocery',
             budget: 110
+        },
+        {
+            title: 'Wifi',
+            budget: 35
+        },
+        {
+            title: 'Gas',
+            budget: 20
+        },
+        {
+            title: 'Electricity',
+            budget: 120
+        },
+        {
+            title: 'water',
+            budget: 15
         },
     ]
 };
@@ -29,6 +45,9 @@ app.get('/budget', (req, res) => {
     res.json(budget);
 });
 
+app.get('/', express.static('public'));
+app.use(express.static('public'));
+// app.get('/main.css', express.static('public/main.css'))
 app.listen(port, () => {
     console.log(`API served at http://localhost:${port}`);
 });
