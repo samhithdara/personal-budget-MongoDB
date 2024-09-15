@@ -82,11 +82,13 @@
                 <canvas id="myChart" width="400" height="400" role="img" aria-label="Budget chart"></canvas>
             </p>
         </article>
+        <!-- <article aria-labelledby="chart"> -->
         <!-- svg container for d3 chart -->
         <div>
             <h1>D3.js</h1>
             <svg width="460px", height="450px" style="margin: 5px;"></svg>
         </div>
+    <!-- </article> -->
 
     </div>
 </main>
@@ -182,8 +184,8 @@
     var key = function(d){ return d.data.label; };
 
     var color = d3.scale.ordinal()
-        .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+        .domain(["Eat out", "Rent", "Grocery", "Wifi", "Gas", "Electricity", "Water"])
+        .range(["#ffcd56", "#ff6384", "#36a2eb", "#fd6b19", "#4bc0c0", "#9966ff", "#ff9f40"]);
 
     axios.get('/budget').then(res => {
         console.log(res);
