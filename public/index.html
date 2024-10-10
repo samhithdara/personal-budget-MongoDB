@@ -135,9 +135,9 @@
     function getBudget() {
         axios.get('http://localhost:3000/budget')
         .then(function (res) {
-            for (var i = 0; i < res.data.myBudget.length; i++) {
-                dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                dataSource.labels[i] = res.data.myBudget[i].title;
+            for (var i = 0; i < res.data.length; i++) {
+                dataSource.datasets[0].data[i] = res.data[i].value;
+                dataSource.labels[i] = res.data[i].title;
                 
             }
             console.log(dataSource)
@@ -184,13 +184,12 @@
     var key = function(d){ return d.data.label; };
 
     var color = d3.scale.ordinal()
-        .domain(["Eat out", "Rent", "Grocery", "Wifi", "Gas", "Electricity", "Water"])
-        .range(["#ffcd56", "#ff6384", "#36a2eb", "#fd6b19", "#4bc0c0", "#9966ff", "#ff9f40"]);
+        .domain(["Rent", "Groceries", "Wifi", "Gas", "Electricity", "Water"])
+        .range(["#ffcd56", "#ff6384", "#36a2eb", "#fd6b19", "#4bc0c0", "#9966ff"]);
 
     axios.get('/budget').then(res => {
-        console.log(res);
-        var data = res.data.myBudget.map(obj => {
-            return {label: obj.title, value: obj.budget}
+        var data = res.data.map(obj => {
+            return {label: obj.title, value: obj.value}
         })
         change(data);
     })
